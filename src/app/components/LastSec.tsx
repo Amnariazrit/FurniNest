@@ -10,7 +10,7 @@ const LastSec = () => {
           Share your setup with
         </h2>
         <h3 className="font-Poppins font-bold text-3xl text-gray-800">
-          #FuniroFurniture
+          #ElegantPeaceFurniture
         </h3>
       </div>
 

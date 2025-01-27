@@ -3,7 +3,6 @@
 'use client';
 import React from 'react'
 import Image from 'next/image'
-import IProducts from '../types/Product';
 import Link from 'next/link';
 
 

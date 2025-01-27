@@ -1,23 +1,26 @@
-import Hero from "./components/Hero";
+
 import Peace from "./components/Peace";
 
 import SubSection from "./components/SubSection";
 
 import LastSec from "./components/LastSec";
 import ProductCards from "./item/page";
+import Carousel from "./components/Carousel";
+import Services from "./components/Services";
 
 export default async function Home() {
   return (
     <div className="w-full h-auto bg-white">
-      <Hero />
+      <Carousel />
 
       <SubSection />
 
-      <ProductCards/>
+      
 
       <Peace />
 
       <LastSec />
+      <Services />
     </div>
   );
 }

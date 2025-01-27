@@ -6,6 +6,7 @@ import { GoHeart } from "react-icons/go";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsPersonExclamation } from "react-icons/bs";
 
+
 export default function Header() {
   return (
     <div>
@@ -21,7 +22,7 @@ export default function Header() {
             className="w-12 h-auto"
           />
           <h1 className="font-montserrat font-bold text-[24px] text-black">
-            Furniro
+            Elegant Peace
           </h1>
         </div>
 
@@ -82,6 +83,7 @@ export default function Header() {
             <Link href="/cart">
               <AiOutlineShoppingCart className="text-2xl text-black cursor-pointer hover:text-gray-600" />
             </Link>
+            
           </div>
         </div>
       </header>

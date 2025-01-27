@@ -1,5 +1,5 @@
 import Services from "@/app/components/Services";
-import { Product } from "@/app/types/Product";
+
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -54,18 +54,25 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* Product Details */}
             <div className="w-full lg:w-1/2 p-6 flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.title}</h1>
+                <h1 className="text-3xl font-bold text-gray-800 mb-4">
+                  {product.title}
+                </h1>
 
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-semibold text-green-600">${product.price}</span>
-                  {product.discountPercentage && product.discountPercentage > 0 && (
-                    <span className="text-sm text-red-500 font-medium">
-                      {product.discountPercentage}% off
-                    </span>
-                  )}
+                  <span className="text-2xl font-semibold text-green-600">
+                    ${product.price}
+                  </span>
+                  {product.discountPercentage &&
+                    product.discountPercentage > 0 && (
+                      <span className="text-sm text-red-500 font-medium">
+                        {product.discountPercentage}% off
+                      </span>
+                    )}
                 </div>
 
-                <p className="text-gray-600 text-base mb-6">{product.description}</p>
+                <p className="text-gray-600 text-base mb-6">
+                  {product.description}
+                </p>
 
                 {product.tags?.length > 0 && (
                   <div className="mb-6">
@@ -84,8 +91,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 )}
               </div>
 
-              <button className="w-full bg-blue-600 text-white py-3 text-sm font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all">
-                Add to Cart
+              <button
+                className="mt-4 w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg
+              hover:scale-105 transition-transform duration-300 ease-in-out"
+              >
+                Add To Cart
               </button>
             </div>
           </div>
@@ -97,21 +107,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import Services from "@/app/components/Services";
 // import { Product } from "@/app/types/Product";
@@ -204,34 +199,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //           </button>
 //         </div>
 //       </div>
-     
+
 //     </div>
 //      <Services />
 //      </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { Product } from "@/app/types/Product";
 // import { client } from "@/sanity/lib/client";
@@ -324,38 +297,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import { Product } from "@/app/types/Product";
 // import { client } from "@/sanity/lib/client";
 // import { urlFor } from "@/sanity/lib/image";
@@ -442,36 +383,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //           </button>
 //         </div>
 //       </div>
-      
+
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { Product } from "@/app/types/Product";
 // import { client } from "@/sanity/lib/client";
@@ -498,8 +413,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //     }`,
 //     { slug }
 
-    
-  
 //   )
 // }
 
@@ -532,34 +445,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //   )
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { client } from '@/sanity/lib/client'; // Sanity clie  
+// import { client } from '@/sanity/lib/client'; // Sanity clie
 // import React from 'react';
-// import IProducts from '@/app/types/Product'; 
+// import IProducts from '@/app/types/Product';
 // import Image from 'next/image';
 
 // const ProductDetailPage = async ({ params: { title } }: { params: { title: string } }) => {
@@ -591,8 +479,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //     );
 //   }
 
- 
-
 //   // Render the product details
 //   return (
 //     <div key={product.title} className="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
@@ -603,19 +489,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 // export default ProductDetailPage;
 
-
-
-
-
-
-
-
-
-
-
 // import { client } from '@/sanity/lib/client'; // Sanity client
 // import React from 'react';
-// import IProducts from '@/app/types/Product'; 
+// import IProducts from '@/app/types/Product';
 // import Image from 'next/image';
 
 // const ProductDetailPage = async ({ params: { _id } }: { params: { _id: string } }) => {
@@ -648,8 +524,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //     );
 //   }
 
-  
-
 //   // Render the product details
 //   return (
 //     <div
@@ -665,7 +539,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //             <span className="text-sm text-red-500">{product.discountPercentage}% OFF</span>
 //           )}
 //         </div>
-        
+
 //           <Image
 //             src={product.imageUrl}
 //             alt={product.title}
@@ -673,7 +547,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //             height={300}
 //             className="w-full h-48 object-cover"
 //           />
-      
+
 //       </div>
 //     </div>
 //   );
@@ -681,28 +555,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 // export default ProductDetailPage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import { client } from '@/sanity/lib/client'; // Sanity client
 // import React from 'react';
 // import IProducts from '@/app/types/Product'; // Assuming this interface exists
 // import { product } from '@/sanity/schemaTypes/product';
 // import Products from '@/app/components/Products';
 // import Image from 'next/image';
-
-
 
 // const ProductDetailPage = async ({params:{_id}}:{params:{_id: string}}) => {
 //   // Query to fetch product details based on the title
@@ -757,37 +615,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //         />
 //       </div>
 
-      
 //     </div>
 //   );
 // };
 
 // export default ProductDetailPage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import { client } from '@/sanity/lib/client';
 // import React from 'react';
 // import Image from 'next/image';
 // import IProducts from '@/app/types/Product';
 
-
-
-
-
 // const ProductDetailPage = async ({ params:{title} }: { params: { title: string } }) => {
-  
 
 //   // Query to fetch product based on the title
 //   const query = `*[_type == "product" && title == $title]{
@@ -846,29 +685,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 // export default ProductDetailPage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import IProducts from '@/app/types/Product';
 // import { client } from '@/sanity/lib/client';
 // import React from 'react';
 // import Image from 'next/image';
-
 
 // const page = async ({ params: { title } }: { params: { title: string } }) => {
 //   // Query to fetch product based on the title
@@ -930,18 +750,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 // };
 
 // export default page;
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import IProducts from '@/app/types/Product';
 // import { client } from '@/sanity/lib/client';
@@ -1010,19 +818,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 // export default page;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import IProducts from '@/app/types/Product';
 // import { client } from '@/sanity/lib/client';
 // import React from 'react';
@@ -1085,18 +880,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 // export default page;
 
-
-
-
-
-
-
-
-
-
-
-
-
 // import IProducts from '@/app/types/Product'
 // import { client } from '@/sanity/lib/client'
 // import React from 'react'
@@ -1111,9 +894,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //     isNew,
 //     tags,
 //     "imageUrl":productImage.asset._ref,
-    
-    
-    
+
 // }[0]`
 
 // const product:IProducts | null = await client.fetch(query, {id})
@@ -1147,14 +928,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
 //           </span>
 //         )}
 //       </div>
-//       <Image 
+//       <Image
 //           src={product.imageUrl}
 //             alt={product.title}
 //             width={300}
 //             height={300}
 //             className="w-full h-48 object-cover"
 //             />
-        
+
 //     </div>
 //     </div>
 
