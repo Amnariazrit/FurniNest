@@ -4,7 +4,7 @@ import Peace from "./components/Peace";
 import SubSection from "./components/SubSection";
 
 import LastSec from "./components/LastSec";
-import ProductCards from "./item/page";
+
 import Carousel from "./components/Carousel";
 import Services from "./components/Services";
 
