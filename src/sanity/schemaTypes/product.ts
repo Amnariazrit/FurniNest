@@ -12,6 +12,13 @@ export const product = defineType({
       type: "string",
     },
     {
+      name:"category",
+      title:"Category",
+      type:"reference",
+      to:[{type:"category"}]
+
+    },
+    {
       name: "slug",
       title: "Slug",
       type: "slug",
