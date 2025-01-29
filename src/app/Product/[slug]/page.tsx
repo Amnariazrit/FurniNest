@@ -1,4 +1,3 @@
-
 import Services from "@/app/components/Services";
 
 import { client } from "@/sanity/lib/client";
@@ -114,9 +113,57 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // old code///////////
-
-
 
 // import Services from "@/app/components/Services";
 // import { Product } from "@/app/types/Product";

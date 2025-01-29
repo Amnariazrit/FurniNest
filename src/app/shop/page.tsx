@@ -98,6 +98,17 @@ export default Shop;
 
 
 
+
+
+
+
+
+
+
+
+
+////// old ////////
+
 // 'use client';
 
 // import Image from "next/image";

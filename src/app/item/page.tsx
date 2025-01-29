@@ -13,27 +13,6 @@ const sanity = createClient({
     "skQC8xHpi3bvaauMIUf8GL7TokgCfq4BBc6pLHJMXFQCTyDiLrDZlW7mMP938NQAYnGVAd810zkFBqaku527ms1Yi5jwft3QkVtERJuEbHQOJRPImaPW1R3ZbhwbDe4okYtmMPzOZzkF0QUIjZzxcBbR1eSFsnT8lFLfHWZbVKPfbIq4Yo92",
 });
 
-interface Product {
-  quantity: number;
-  _id: string;
-  title: string;
-  price: number;
-  description: string;
-  tags: string[];
-  discountPercentage?: number;
-  isNew: boolean;
-  slug: {
-    _type: "slug";
-    current: string;
-  };
-  imageUrl: string;
-  productImage: {
-    asset: {
-      _ref: string;
-    };
-  };
-}
-
 const ProductCards: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -74,7 +53,9 @@ const ProductCards: React.FC = () => {
     const updatedCart = [...cartItems];
 
     // Check if the product already exists in the cart
-    const existingProductIndex = updatedCart.findIndex((item: Product) => item._id === product._id);
+    const existingProductIndex = updatedCart.findIndex(
+      (item: Product) => item._id === product._id
+    );
 
     if (existingProductIndex !== -1) {
       // Product already exists, increase quantity
@@ -134,19 +115,24 @@ const ProductCards: React.FC = () => {
               </div>
             </Link>
             <div className="mt-4 flex-1">
-              <h2 className="text-xl font-bold text-gray-900">{product.title}</h2>
+              <h2 className="text-xl font-bold text-gray-900">
+                {product.title}
+              </h2>
               <p className="mt-2 text-sm text-gray-600 line-clamp-2">
                 {product.description}
               </p>
               <div className="mt-3 text-gray-800">
                 <p className="font-bold">${product.price.toFixed(2)}</p>
-                {product.discountPercentage && product.discountPercentage > 0 && (
-                  <p className="text-sm text-green-500">
-                    {product.discountPercentage}% off
-                  </p>
-                )}
+                {product.discountPercentage &&
+                  product.discountPercentage > 0 && (
+                    <p className="text-sm text-green-500">
+                      {product.discountPercentage}% off
+                    </p>
+                  )}
               </div>
-              {product.isNew && <p className="mt-2 text-sm text-blue-500">New</p>}
+              {product.isNew && (
+                <p className="mt-2 text-sm text-blue-500">New</p>
+              )}
             </div>
             <button
               className="mt-4 w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out"
@@ -186,6 +172,60 @@ export default ProductCards;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////// old //////
 
 // "use client";
 // import React, { useEffect, useState } from "react";
@@ -257,7 +297,7 @@ export default ProductCards;
 
 //     // Check if the product already exists in the cart
 //     const existingProductIndex = storedCart.findIndex((item: Product) => item._id === product._id);
-    
+
 //     if (existingProductIndex !== -1) {
 //       // Product already exists, increase quantity
 //       storedCart[existingProductIndex].quantity += 1;
@@ -343,29 +383,6 @@ export default ProductCards;
 // };
 
 // export default ProductCards;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // 'use client';
 
@@ -504,28 +521,6 @@ export default ProductCards;
 
 // export default ProductCards;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // "use client";
 // import React, { useEffect, useState } from "react";
 // import Image from "next/image";
@@ -610,7 +605,7 @@ export default ProductCards;
 
 //       {/* Integrate SearchFilter component */}
 //       <SearchFilter
-        
+
 //         onFilter={setFilteredProducts} // Pass the handler to update filtered products
 //         products={[]}      />
 
@@ -659,31 +654,6 @@ export default ProductCards;
 // };
 
 // export default ProductCards;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // 'use Client'
 // import Link from "next/link";
@@ -786,32 +756,6 @@ export default ProductCards;
 // };
 
 // export default ProductCards;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 // import React, { useEffect, useState } from "react";
@@ -925,7 +869,7 @@ export default ProductCards;
 //                   <p className="text-sm text-green-500">{product.discountPercentage}% off</p>
 //                 )}
 //               </div>
-              
+
 //               {product.isNew && <p className="mt-2 text-sm text-blue-500">New</p>}
 //             </div>
 //             <button
@@ -943,27 +887,6 @@ export default ProductCards;
 // };
 
 // export default ProductCards;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // 'use client';
 // import React, { useEffect, useState } from "react";
@@ -1102,27 +1025,12 @@ export default ProductCards;
 
 // export default ProductCards;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 'use client';
 // import React, { useEffect, useState } from "react";
 // import Image from "next/image";
 // import { createClient } from "@sanity/client";
 // import Link from "next/link";
 // import Swal from "sweetalert2"
-
-
 
 // const sanity = createClient({
 //   projectId: "4d6ygodw",
@@ -1143,7 +1051,7 @@ export default ProductCards;
 //     _type: "slug";
 //     current: string;
 //   };
-    
+
 //   imageUrl: string;
 //   productImage: {
 //     asset: {
@@ -1170,7 +1078,7 @@ export default ProductCards;
 //             slug,
 //             "imageUrl": productImage.asset->url,
 //             productImage
-            
+
 //         }`;
 //       const data: Product[] = await sanity.fetch(query);
 //       setProducts(data);
@@ -1200,7 +1108,7 @@ export default ProductCards;
 //       })
 
 //         addToCart(product)
-      
+
 //   }
 
 //   return (
@@ -1226,7 +1134,7 @@ export default ProductCards;
 //               <p className="font-bold">${product.price.toFixed(2)}</p>
 //               {product.discountPercentage && product.discountPercentage > 0 && (
 //                 <p className="text-sm text-green-500">{product.discountPercentage}% off</p>
-                
+
 //               )}
 //             </div>
 //             <div className="mt-4 flex flex-wrap gap-2">
@@ -1240,7 +1148,7 @@ export default ProductCards;
 //               ))}
 //             </div>
 //             {product.isNew && <p className="mt-2 text-sm text-blue-500">New</p>}
-            
+
 //             <div>
 //         <button
 //       className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg
@@ -1277,41 +1185,20 @@ export default ProductCards;
 //         ) : (
 //           <p className="text-gray-600 text-center">Your cart is empty. Add some items to your cart.</p>
 //         )}
-        
+
 //       </div> */}
-      
+
 //     </div>
 //   );
 // };
 
 // export default ProductCards;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 'use client';
 // import React, { useEffect, useState } from "react";
 
 // import Image from "next/image";
 // import { createClient } from "@sanity/client";
-
 
 // const sanity = createClient({
 //   projectId: "4d6ygodw",

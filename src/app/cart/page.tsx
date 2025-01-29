@@ -1,8 +1,7 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Image from "next/image";
-
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -33,7 +32,7 @@ const CartPage = () => {
   };
 
   const handleQuantityChange = (id: string, quantity: number) => {
-    const updatedCart = cartItems.map(item =>
+    const updatedCart = cartItems.map((item) =>
       item._id === id ? { ...item, quantity } : item
     );
     setCartItems(updatedCart);
@@ -47,11 +46,15 @@ const CartPage = () => {
 
   const handleDecrement = (id: string) => {
     const product = cartItems.find((item) => item._id === id);
-    if (product && product.quantity > 1) handleQuantityChange(id, product.quantity - 1);
+    if (product && product.quantity > 1)
+      handleQuantityChange(id, product.quantity - 1);
   };
 
   const calculatedTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   const handleProceed = () => {
@@ -65,7 +68,11 @@ const CartPage = () => {
       confirmButtonText: "Yes, proceed!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Success", "Your Order has been successfully processed", "success");
+        Swal.fire(
+          "Success",
+          "Your Order has been successfully processed",
+          "success"
+        );
         setCartItems([]);
         localStorage.setItem("cartItems", JSON.stringify([])); // Clear localStorage after checkout
       }
@@ -77,7 +84,10 @@ const CartPage = () => {
       <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {cartItems.map((item) => (
-          <div key={item._id} className="border rounded-lg shadow-sm p-4 bg-white">
+          <div
+            key={item._id}
+            className="border rounded-lg shadow-sm p-4 bg-white"
+          >
             {item.imageUrl && (
               <Image
                 src={item.imageUrl} // Use the imageUrl property
@@ -88,7 +98,9 @@ const CartPage = () => {
               />
             )}
             <h2 className="text-lg font-semibold mb-2">{item.title}</h2>
-            <p className="text-sm text-gray-600 mb-4">Price: ${item.price.toFixed(2)}</p>
+            <p className="text-sm text-gray-600 mb-4">
+              Price: ${item.price.toFixed(2)}
+            </p>
             <div className="flex items-center justify-between">
               <button
                 className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
@@ -103,7 +115,9 @@ const CartPage = () => {
                 >
                   -
                 </button>
-                <span className="px-2 text-lg font-semibold">{item.quantity}</span>
+                <span className="px-2 text-lg font-semibold">
+                  {item.quantity}
+                </span>
                 <button
                   className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
                   onClick={() => handleIncrement(item._id)}
@@ -139,11 +153,6 @@ const CartPage = () => {
 };
 
 export default CartPage;
-
-
-
-
-
 
 
 
@@ -306,25 +315,6 @@ export default CartPage;
 // };
 
 // export default CartPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 // import React, { useEffect, useState } from "react";
