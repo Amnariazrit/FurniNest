@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ContactForm from "../components/ContactForm";
+
 import Services from "../components/Services";
+import ContactForm from "@/components/contactForm";
+
 
 const Contact = () => {
   return (

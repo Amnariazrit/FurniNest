@@ -1,6 +1,5 @@
 import Peace from "./components/Peace";
-
-import SubSection from "./components/SubSection";
+import Category from "./components/Category";
 
 import LastSec from "./components/LastSec";
 
@@ -12,11 +11,12 @@ export default async function Home() {
     <div className="w-full h-auto bg-white">
       <Carousel />
 
-      <SubSection />
+      <Category />
 
       <Peace />
 
       <LastSec />
+      
       <Services />
     </div>
   );
