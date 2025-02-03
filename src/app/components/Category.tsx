@@ -45,30 +45,30 @@ const Category: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-[50vh]">
         <p className="text-lg font-medium text-gray-600">Loading categories...</p>
       </div>
     );
   }
 
   return (
-    <div className="w-full py-16 px-4 md:px-8 lg:px-12 bg-gray-100">
-      <div className="text-center max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+    <div className="w-full py-10 px-4 sm:px-6 md:px-12 lg:px-16 bg-gray-100">
+      <div className="text-center max-w-4xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3">
           Browse The Range
         </h2>
-        <p className="text-lg sm:text-xl text-gray-600 mb-8">
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6">
           Discover high-quality furniture designed to enhance your living space.
         </p>
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-4 md:px-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
         {categories.length > 0 ? (
           categories.map((category) => (
             <Link key={category.title} href={`/category/${category.title}`}>
-              <div className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 flex flex-col items-center">
-                <div className="relative w-full h-64 sm:h-72 md:h-80 flex items-center justify-center">
+              <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 flex flex-col items-center">
+                <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 flex items-center justify-center">
                   <Image
                     src={category.imageUrl}
                     alt={category.title}
@@ -77,8 +77,8 @@ const Category: React.FC = () => {
                     className="group-hover:scale-105 transition-transform duration-300 object-center"
                   />
                 </div>
-                <div className="p-4 text-center w-full">
-                  <p className="text-lg sm:text-xl font-semibold text-gray-800 group-hover:text-gray-600 transition-colors">
+                <div className="p-3 text-center w-full">
+                  <p className="text-sm sm:text-lg md:text-xl font-semibold text-gray-800 group-hover:text-gray-600 transition-colors">
                     {category.title}
                   </p>
                 </div>
@@ -94,6 +94,133 @@ const Category: React.FC = () => {
 };
 
 export default Category;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "use client";
+// import React, { useEffect, useState } from "react";
+// import { createClient } from "@sanity/client";
+// import Image from "next/image";
+// import Link from "next/link";
+
+// // Initialize Sanity client
+// const client = createClient({
+//   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+//   dataset: "production",
+//   useCdn: true,
+//   apiVersion: "2025-01-25",
+// });
+
+// // Category type definition
+// interface Category {
+//   title: string;
+//   imageUrl: string;
+// }
+
+// const Category: React.FC = () => {
+//   const [categories, setCategories] = useState<Category[]>([]);
+//   const [loading, setLoading] = useState<boolean>(true);
+
+//   // Fetch categories from Sanity
+//   useEffect(() => {
+//     const fetchCategoryData = async () => {
+//       try {
+//         const query = `*[_type == "category"] {
+//           title,
+//           "imageUrl": image.asset->url
+//         }`;
+
+//         const fetchedCategories = await client.fetch(query);
+//         setCategories(fetchedCategories);
+//       } catch (error) {
+//         console.error("Error fetching category data:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchCategoryData();
+//   }, []);
+
+//   if (loading) {
+//     return (
+//       <div className="flex justify-center items-center h-screen">
+//         <p className="text-lg font-medium text-gray-600">Loading categories...</p>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="w-full py-16 px-4 md:px-8 lg:px-12 bg-gray-100">
+//       <div className="text-center max-w-6xl mx-auto">
+//         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+//           Browse The Range
+//         </h2>
+//         <p className="text-lg sm:text-xl text-gray-600 mb-8">
+//           Discover high-quality furniture designed to enhance your living space.
+//         </p>
+//       </div>
+
+//       {/* Categories Grid */}
+//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-4 md:px-0">
+//         {categories.length > 0 ? (
+//           categories.map((category) => (
+//             <Link key={category.title} href={`/category/${category.title}`}>
+//               <div className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 flex flex-col items-center">
+//                 <div className="relative w-full h-64 sm:h-72 md:h-80 flex items-center justify-center">
+//                   <Image
+//                     src={category.imageUrl}
+//                     alt={category.title}
+//                     layout="fill"
+//                     objectFit="cover"
+//                     className="group-hover:scale-105 transition-transform duration-300 object-center"
+//                   />
+//                 </div>
+//                 <div className="p-4 text-center w-full">
+//                   <p className="text-lg sm:text-xl font-semibold text-gray-800 group-hover:text-gray-600 transition-colors">
+//                     {category.title}
+//                   </p>
+//                 </div>
+//               </div>
+//             </Link>
+//           ))
+//         ) : (
+//           <p className="text-center text-gray-500">No categories available.</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Category;
 
 
 

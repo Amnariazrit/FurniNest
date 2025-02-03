@@ -26,6 +26,12 @@ type FormType = z.infer<typeof formSchema>;
 const ContactForm = () => {
   const form = useForm<FormType>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
   });
 
   async function onSubmit(values: FormType) {
@@ -36,6 +42,8 @@ const ContactForm = () => {
       subject: values.subject,
       message: values.message,
     });
+
+    form.reset(); // Clear form fields after submission
   }
 
   return (
@@ -143,6 +151,179 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "use client";
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import { useForm } from "react-hook-form";
+// import { z } from "zod";
+// import { Button } from "@/components/ui/button";
+// import {
+//   Form,
+//   FormControl,
+//   FormField,
+//   FormItem,
+//   FormLabel,
+//   FormMessage,
+// } from "@/components/ui/form";
+// import { Input } from "@/components/ui/input";
+// import { client } from "@/sanity/lib/client";
+
+// const formSchema = z.object({
+//   firstName: z.string().min(1).max(50),
+//   email: z.string().email(),
+//   subject: z.string().max(100).optional(),
+//   message: z.string().min(1).max(500),
+// });
+
+// type FormType = z.infer<typeof formSchema>;
+
+// const ContactForm = () => {
+//   const form = useForm<FormType>({
+//     resolver: zodResolver(formSchema),
+//   });
+
+//   async function onSubmit(values: FormType) {
+//     await client.create({
+//       _type: "contactForm",
+//       name: values.firstName,
+//       email: values.email,
+//       subject: values.subject,
+//       message: values.message,
+//     });
+//   }
+
+//   return (
+//     <div className="bg-gray-50 min-h-screen flex items-center justify-center py-16 px-8">
+//       <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-8 space-y-6">
+//         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+//           Contact Us
+//         </h2>
+//         <p className="text-center text-gray-600 mb-8">
+//           We’re here to assist you! Please reach out if you have any questions or need support.
+//         </p>
+
+//         <Form {...form}>
+//           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+//             {/* First Name Field */}
+//             <FormField
+//               control={form.control}
+//               name="firstName"
+//               render={({ field }) => (
+//                 <FormItem>
+//                   <FormLabel className="text-sm font-medium text-gray-700">First Name</FormLabel>
+//                   <FormControl>
+//                     <Input
+//                       placeholder="Enter your first name"
+//                       {...field}
+//                       className="mt-2 p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 w-full"
+//                     />
+//                   </FormControl>
+//                   <FormMessage className="text-sm text-red-500" />
+//                 </FormItem>
+//               )}
+//             />
+
+//             {/* Email Field */}
+//             <FormField
+//               control={form.control}
+//               name="email"
+//               render={({ field }) => (
+//                 <FormItem>
+//                   <FormLabel className="text-sm font-medium text-gray-700">Email</FormLabel>
+//                   <FormControl>
+//                     <Input
+//                       placeholder="Enter your email"
+//                       {...field}
+//                       className="mt-2 p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 w-full"
+//                     />
+//                   </FormControl>
+//                   <FormMessage className="text-sm text-red-500" />
+//                 </FormItem>
+//               )}
+//             />
+
+//             {/* Subject Field */}
+//             <FormField
+//               control={form.control}
+//               name="subject"
+//               render={({ field }) => (
+//                 <FormItem>
+//                   <FormLabel className="text-sm font-medium text-gray-700">Subject (Optional)</FormLabel>
+//                   <FormControl>
+//                     <Input
+//                       placeholder="Enter subject"
+//                       {...field}
+//                       className="mt-2 p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 w-full"
+//                     />
+//                   </FormControl>
+//                   <FormMessage className="text-sm text-red-500" />
+//                 </FormItem>
+//               )}
+//             />
+
+//             {/* Message Field */}
+//             <FormField
+//               control={form.control}
+//               name="message"
+//               render={({ field }) => (
+//                 <FormItem>
+//                   <FormLabel className="text-sm font-medium text-gray-700">Message</FormLabel>
+//                   <FormControl>
+//                     <textarea
+//                       placeholder="Share your message here"
+//                       {...field}
+//                       rows={6}
+//                       className="mt-2 p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 w-full"
+//                     />
+//                   </FormControl>
+//                   <FormMessage className="text-sm text-red-500" />
+//                 </FormItem>
+//               )}
+//             />
+
+//             <div className="text-center">
+//               <Button
+//                 type="submit"
+//                 className="w-full py-3 bg-yellow-500 text-white rounded-lg shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+//               >
+//                 Submit
+//               </Button>
+//             </div>
+//           </form>
+//         </Form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ContactForm;
 
 
 
